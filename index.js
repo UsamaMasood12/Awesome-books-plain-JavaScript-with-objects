@@ -46,3 +46,20 @@ ourBooks.forEach((book) => {
   bookList.appendChild(singleBook);
 });
 
+const addButton = document.querySelector('#add_Button');
+addButton.addEventListener('click', () => {
+  const name = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  let id = 0;
+  if (ourBooks.length > 0) {
+    id = ourBooks[ourBooks.length - 1].id + 1;
+  }
+  ourBooks.push({
+    id,
+    name,
+    author,
+  });
+  localStorage.setItem('save', JSON.stringify(ourBooks));
+  // eslint-disable-next-line no-restricted-globals
+  location.reload();
+});
